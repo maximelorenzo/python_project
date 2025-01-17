@@ -1,6 +1,23 @@
 # CHANGELOG
 
 
+## v1.0.0 (2025-01-17)
+
+### Chores
+
+- Prepare for release version 1.0.0
+  ([`1294ec7`](https://github.com/maximelorenzo/python_project/commit/1294ec7ac6301398a7db891b90a8472d4f998814))
+
+- Release version 1.0.0
+  ([`d4619b5`](https://github.com/maximelorenzo/python_project/commit/d4619b564988cf6ba901323e6328cc9216d15cb1))
+
+BREAKING CHANGE: Initial release of version 1.0.0. Changes might affect compatibility.
+
+### BREAKING CHANGES
+
+- Initial release of version 1.0.0. Changes might affect compatibility.
+
+
 ## v0.6.0 (2025-01-17)
 
 ### Features
