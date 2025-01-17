@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.0 (2025-01-17)
+
+### Features
+
+- Introduce max sharpe ratio method for portfolio optimization
+  ([`5376061`](https://github.com/maximelorenzo/python_project/commit/5376061c64320c7c379762ed6c2b3d8f8c3934f6))
+
+
 ## v0.2.0 (2025-01-17)
 
 ### Features
