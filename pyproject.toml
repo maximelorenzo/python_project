@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pybacktestchain-extensions"
-version = "1.0.4"
+version = "1.0.5"
 packages = []
 description = "Python Project, M2 203"
 authors = ["Maxime Lorenzo"]
