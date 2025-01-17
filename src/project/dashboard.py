@@ -3,6 +3,10 @@ import datetime as dt
 from pybacktestchain.broker import Backtest, StopLoss
 from pybacktestchain.data_module import FirstTwoMoments
 import os
+from project.data_stocks import CustomBacktest
+from project.data_stocks import load_sp500_data
+
+stock_names, stock_tickers = load_sp500_data()
 
 # Title of the dashboard
 st.title("Backtest Dashboard")
@@ -25,13 +29,23 @@ initial_cash = st.sidebar.number_input(
     "Initial Cash", value=1000000, step=10000
 )  # Default initial cash is $1,000,000
 
+# Input field for selecting tickers
+selected_stock_names = st.sidebar.multiselect(
+    "Select Tickers", 
+    options=stock_names,
+    default=['Apple Inc.', 'Microsoft', 'Alphabet Inc. (Class A)', 'Amazon', 'Meta Platforms', 'Tesla, Inc.', 'Nvidia', 'Intel', 'Cisco', 'Netflix']  # Default selected tickers
+)
+
+selected_tickers = [stock_tickers[name] for name in selected_stock_names if name in stock_tickers]
+
 # Button to execute the backtest
 if st.sidebar.button("Run Backtest"):
     try:
         # Configure the backtest object
-        backtest = Backtest(
+        backtest = CustomBacktest(
             initial_date=start_date,  # User-defined start date
             final_date=end_date,  # User-defined end date
+            universe=selected_tickers,  # User-selected tickers
             information_class=FirstTwoMoments,  # Uses FirstTwoMoments for portfolio calculations
             risk_model=StopLoss,  # Stop-loss model for risk management
             name_blockchain="dashboard_backtest",  # Save results to a blockchain named "dashboard_backtest"

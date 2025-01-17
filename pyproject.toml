@@ -1,6 +1,9 @@
 [tool.poetry]
 name = "project"
 version = "0.1.1"
+packages = [
+    { include = "docs" }
+]
 description = "Python Project, M2 203"
 authors = ["Maxime Lorenzo"]
 license = "MIT"
@@ -20,6 +23,9 @@ version_variable = "pyproject.toml:version"
 version_toml = [
     "pyproject.toml:tool.poetry.version",
 ]
+
+[tool.poetry.include]
+include = ["docs/SP500.csv"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
