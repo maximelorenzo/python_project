@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "project"
+name = "pybacktestchain-extensions"
 version = "1.0.0"
 packages = [
     { include = "docs" }
@@ -24,8 +24,9 @@ version_toml = [
     "pyproject.toml:tool.poetry.version",
 ]
 
-[tool.poetry.include]
-include = ["docs/SP500.csv"]
+[tool.poetry.scripts]
+pybacktestchain-dashboard = "pybacktestchain.main:start_dashboard"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
