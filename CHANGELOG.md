@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-01-17)
+
+### Features
+
+- User can choose between two risk models
+  ([`32c7a47`](https://github.com/maximelorenzo/python_project/commit/32c7a47eca5ae0a48c4a89cf5e51ea82e087ab8b))
+
+
 ## v0.5.0 (2025-01-17)
 
 ### Features
