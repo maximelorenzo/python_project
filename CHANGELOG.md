@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-01-17)
+
+### Bug Fixes
+
+- Rename project.py to dashboard.py
+  ([`98dd8d2`](https://github.com/maximelorenzo/python_project/commit/98dd8d2c230efc9071bcabbfc133ff0669bf7366))
+
+
 ## v0.1.0 (2025-01-17)
 
 ### Features

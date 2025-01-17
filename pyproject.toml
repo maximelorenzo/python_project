@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "project"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python Project, M2 203"
 authors = ["Maxime Lorenzo"]
 license = "MIT"
