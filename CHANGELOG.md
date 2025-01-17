@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.2 (2025-01-18)
+
+### Bug Fixes
+
+- Update launch script and ensure dashboard execution works
+  ([`daa02ac`](https://github.com/maximelorenzo/python_project/commit/daa02ac1fe3b49fc55e120bcfeeb3f202e9d1644))
+
+
 ## v1.0.1 (2025-01-18)
 
 ### Bug Fixes
