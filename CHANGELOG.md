@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-01-17)
+
+### Features
+
+- New optimization for portfolio: minimum variance portfolio and equal risk contribution portfolio
+  ([`4e8fef1`](https://github.com/maximelorenzo/python_project/commit/4e8fef1879d75447cbf77a41845ae860ddf6d616))
+
+
 ## v0.4.0 (2025-01-17)
 
 ### Features
