@@ -4,6 +4,12 @@ import json
 import datetime as dt
 import os
 from project.work import load_sp500_data
+import subprocess
+
+def main():
+    dashboard_path = os.path.abspath(__file__)
+    subprocess.run(["streamlit", "run", dashboard_path])
+
 
 stock_names, stock_tickers = load_sp500_data()
 

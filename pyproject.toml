@@ -25,7 +25,7 @@ version_toml = [
 ]
 
 [tool.poetry.scripts]
-launch = "src.project.launch:main"
+run-dashboard = "src.project.dashboard:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
