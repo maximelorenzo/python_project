@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.4 (2025-01-18)
+
+### Bug Fixes
+
+- Simplify dashboard launch process
+  ([`ad5e06b`](https://github.com/maximelorenzo/python_project/commit/ad5e06be80b921fe7457bf75c1162f7a93710dcc))
+
+
 ## v1.0.3 (2025-01-18)
 
 ### Bug Fixes
