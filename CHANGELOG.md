@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-01-17)
+
+### Features
+
+- Stocks selection for dashboard
+  ([`6ce915c`](https://github.com/maximelorenzo/python_project/commit/6ce915c6d5bf4c796b863f7aeed8367aaea6006c))
+
+
 ## v0.1.1 (2025-01-17)
 
 ### Bug Fixes
