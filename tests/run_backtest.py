@@ -20,6 +20,10 @@ def main():
         from pybacktestchain.data_module import FirstTwoMoments as SelectedClass
     elif optimization_method == "MaxSharpeRatio":
         from project.work import MaxSharpeRatio as SelectedClass
+    elif optimization_method == "EqualRiskContributionPortfolio":
+        from project.work import EqualRiskContributionPortfolio as SelectedClass
+    elif optimization_method == "MinimumVariancePortfolio":
+        from project.work import MinimumVariancePortfolio as SelectedClass
     else:
         raise ValueError(f"Unknown optimization method: {optimization_method}")
 

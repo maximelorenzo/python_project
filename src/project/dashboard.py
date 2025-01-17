@@ -33,7 +33,7 @@ selected_stock_names = st.sidebar.multiselect(
 selected_tickers = [stock_tickers[name] for name in selected_stock_names if name in stock_tickers]
 
 # Dropdown to choose the optimization method
-optimization_methods = ["FirstTwoMoments", "MaxSharpeRatio"]
+optimization_methods = ["FirstTwoMoments", "MaxSharpeRatio", "EqualRiskContributionPortfolio", "MinimumVariancePortfolio"]
 selected_method_name = st.sidebar.selectbox("Select Optimization Method", options=optimization_methods)
 
 risk_free_rate = 0.01  # Taux par défaut

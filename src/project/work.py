@@ -68,3 +68,86 @@ class MaxSharpeRatio(FirstTwoMoments):
             logging.warning("Error computing portfolio, returning equal weight portfolio")
             logging.warning(e)
             return {k: 1 / len(information_set['companies']) for k in information_set['companies']}
+
+
+@dataclass
+class MinimumVariancePortfolio(FirstTwoMoments):
+    def compute_portfolio(self, t: datetime, information_set):
+        try:
+            Sigma = information_set['covariance_matrix']
+            n = len(Sigma)
+
+            # Define the portfolio variance as the objective function
+            def portfolio_variance(weights):
+                return weights.dot(Sigma).dot(weights)
+
+            # Constraints: weights must sum to 1
+            cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+            # Bounds: Long-only portfolio (weights between 0 and 1)
+            bounds = [(0.0, 1.0)] * n
+            # Initial guess: equal weights
+            x0 = np.ones(n) / n
+
+            # Minimize the portfolio variance
+            res = minimize(portfolio_variance, x0, constraints=cons, bounds=bounds)
+
+            # Prepare portfolio dictionary
+            portfolio = {k: None for k in information_set['companies']}
+            if res.success:
+                for i, company in enumerate(information_set['companies']):
+                    portfolio[company] = res.x[i]
+            else:
+                raise Exception("Optimization did not converge")
+
+            return portfolio
+        except Exception as e:
+            # If an error occurs, return equal weights and log the issue
+            logging.warning("Error computing portfolio, returning equal weight portfolio")
+            logging.warning(e)
+            return {k: 1 / len(information_set['companies']) for k in information_set['companies']}
+
+@dataclass
+class EqualRiskContributionPortfolio(FirstTwoMoments):
+    def compute_portfolio(self, t: datetime, information_set):
+        try:
+            Sigma = information_set['covariance_matrix']
+            n = len(Sigma)
+
+            # Function to compute the risk contributions
+            def risk_contributions(weights):
+                portfolio_variance = weights.dot(Sigma).dot(weights)
+                marginal_risk = Sigma.dot(weights)
+                return weights * marginal_risk / portfolio_variance
+
+            # Objective: minimize the squared difference between risk contributions
+            def objective(weights):
+                rc = risk_contributions(weights)
+                avg_rc = np.mean(rc)
+                return np.sum((rc - avg_rc) ** 2)
+
+            # Constraints: weights sum to 1
+            cons = ({'type': 'eq', 'fun': lambda w: np.sum(w) - 1})
+
+            # Bounds: Long-only portfolio (weights between 0 and 1)
+            bounds = [(0.0, 1.0)] * n
+
+            # Initial guess: equal weights
+            x0 = np.ones(n) / n
+
+            # Minimize the objective
+            res = minimize(objective, x0, constraints=cons, bounds=bounds)
+
+            # Prepare the portfolio dictionary
+            portfolio = {k: None for k in information_set['companies']}
+            if res.success:
+                for i, company in enumerate(information_set['companies']):
+                    portfolio[company] = res.x[i]
+            else:
+                raise Exception("Optimization did not converge")
+
+            return portfolio
+        except Exception as e:
+            # If an error occurs, return equal weights and log the issue
+            logging.warning("Error computing portfolio, returning equal weight portfolio")
+            logging.warning(e)
+            return {k: 1 / len(information_set['companies']) for k in information_set['companies']}
