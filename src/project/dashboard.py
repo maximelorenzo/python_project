@@ -36,6 +36,17 @@ selected_tickers = [stock_tickers[name] for name in selected_stock_names if name
 optimization_methods = ["FirstTwoMoments", "MaxSharpeRatio"]
 selected_method_name = st.sidebar.selectbox("Select Optimization Method", options=optimization_methods)
 
+risk_free_rate = 0.01  # Taux par défaut
+if selected_method_name == "MaxSharpeRatio":
+    risk_free_rate = st.sidebar.number_input(
+        "Risk-Free Rate (Annual)", 
+        min_value=0.0, 
+        max_value=0.1, 
+        value=0.01, 
+        step=0.001,
+        format="%.4f"
+    )
+
 # Button to execute the backtest
 if st.sidebar.button("Run Backtest"):
     if not selected_tickers:
@@ -48,7 +59,8 @@ if st.sidebar.button("Run Backtest"):
                 "final_date": end_date.strftime('%Y-%m-%d'),
                 "universe": selected_tickers,
                 "initial_cash": initial_cash,
-                "optimization_method": selected_method_name
+                "optimization_method": selected_method_name,
+                "risk_free_rate": risk_free_rate
             }
 
             # Call the script

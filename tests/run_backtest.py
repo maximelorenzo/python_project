@@ -13,6 +13,7 @@ def main():
     universe = args['universe']
     initial_cash = args['initial_cash']
     optimization_method = args['optimization_method']
+    risk_free_rate = args.get('risk_free_rate', 0.01)
     
     # Import the selected optimization method
     if optimization_method == "FirstTwoMoments":
@@ -28,7 +29,8 @@ def main():
         final_date=final_date,
         universe=universe,
         information_class=SelectedClass,
-        initial_cash=initial_cash
+        initial_cash=initial_cash,
+        risk_free_rate=risk_free_rate
     )
     
     custom_backtest.run_backtest()
