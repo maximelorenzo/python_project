@@ -2,12 +2,13 @@ import streamlit as st
 import datetime as dt
 from pybacktestchain.broker import Backtest, StopLoss
 from pybacktestchain.data_module import FirstTwoMoments
+import os
 
 # Title of the dashboard
 st.title("Backtest Dashboard")
 
 # Sidebar configuration for user inputs
-st.sidebar.header("Backtest Configuration")
+st.sidebar.header("Backtest Parameters")
 
 # Input fields for start and end dates
 start_date = dt.datetime.combine(
@@ -43,15 +44,30 @@ if st.sidebar.button("Run Backtest"):
         st.info("Running backtest... Please wait, this may take a while.")
         backtest.run_backtest()  # Execute the backtest logic
 
-        # Success message upon completion
-        st.success("Backtest completed successfully!")
-        st.write("Results have been stored in the blockchain.")
+        # Generate the option to download the cvs file
+        generated_file = f"backtests/{backtest.backtest_name}.csv"
+
+        if os.path.exists(generated_file):
+            # Success message upon completion
+            st.success("Backtest completed successfully!")
+            st.write("Results are ready to download.")
+
+            # Read the CSV file for download
+            with open(generated_file, "rb") as file:
+                st.download_button(
+                    label=f"Download {backtest.backtest_name}.csv",
+                    data=file,
+                    file_name=f"{backtest.backtest_name}.csv",
+                    mime="text/csv",
+                )
+        else:
+            st.error("The backtest completed, but the results file was not found.")
+
     except Exception as e:
         # Display error messages if the backtest fails
         st.error(f"An error occurred: {e}")
 
 # Instructions for the user
 st.write(
-    "Configure your backtest in the sidebar, including start and end dates and initial cash. "
-    "Click 'Run Backtest' to execute the simulation."
+    "Configure your backtest in the sidebar, then click on the button Run."
 )
