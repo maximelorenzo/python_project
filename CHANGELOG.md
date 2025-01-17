@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-01-17)
+
+### Features
+
+- Add a variable risk free rate in the dashboard if the user choose to maximize the sharpe ratio
+  ([`937a00e`](https://github.com/maximelorenzo/python_project/commit/937a00e6362376d577f38721328e8fe2aad15727))
+
+
 ## v0.3.0 (2025-01-17)
 
 ### Features
