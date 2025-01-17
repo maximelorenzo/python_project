@@ -36,6 +36,20 @@ selected_tickers = [stock_tickers[name] for name in selected_stock_names if name
 optimization_methods = ["FirstTwoMoments", "MaxSharpeRatio", "EqualRiskContributionPortfolio", "MinimumVariancePortfolio"]
 selected_method_name = st.sidebar.selectbox("Select Optimization Method", options=optimization_methods)
 
+# Add a dropdown for selecting the risk model
+risk_models = ["StopLoss", 'TrailingStop'] 
+selected_risk_model = st.sidebar.selectbox("Select Risk Model", options=risk_models)
+
+# Add an input for the threshold value
+threshold = st.sidebar.number_input(
+    "Threshold (as a percentage)",
+    min_value=0.0,
+    max_value=1.0,
+    value=0.1,  # Default threshold (10%)
+    step=0.01,
+    format="%.2f"
+)
+
 risk_free_rate = 0.01  # Taux par défaut
 if selected_method_name == "MaxSharpeRatio":
     risk_free_rate = st.sidebar.number_input(
@@ -60,7 +74,9 @@ if st.sidebar.button("Run Backtest"):
                 "universe": selected_tickers,
                 "initial_cash": initial_cash,
                 "optimization_method": selected_method_name,
-                "risk_free_rate": risk_free_rate
+                "risk_free_rate": risk_free_rate,
+                "risk_model": selected_risk_model,
+                "threshold": threshold
             }
 
             # Call the script

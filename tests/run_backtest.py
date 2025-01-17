@@ -14,6 +14,16 @@ def main():
     initial_cash = args['initial_cash']
     optimization_method = args['optimization_method']
     risk_free_rate = args.get('risk_free_rate', 0.01)
+    threshold = args['threshold']
+    risk_model = args['risk_model']
+
+    # Dynamically import and initialize the risk model
+    if risk_model == "StopLoss":
+        from pybacktestchain.broker import StopLoss as RiskModel
+    elif risk_model == "TrailingStop":
+        from project.work import TrailingStop as RiskModel
+    else:
+        raise ValueError(f"Unknown risk model: {risk_model}")
     
     # Import the selected optimization method
     if optimization_method == "FirstTwoMoments":
@@ -34,7 +44,9 @@ def main():
         universe=universe,
         information_class=SelectedClass,
         initial_cash=initial_cash,
-        risk_free_rate=risk_free_rate
+        risk_free_rate=risk_free_rate,
+        risk_model=RiskModel,
+        thresold=threshold
     )
     
     custom_backtest.run_backtest()

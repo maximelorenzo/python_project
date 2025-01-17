@@ -14,7 +14,7 @@ from pybacktestchain.broker import Backtest, StopLoss
 
 @dataclass
 class CustomBacktest(Backtest):
-    def __init__(self, initial_date: datetime, final_date: datetime, universe=None, information_class=None, initial_cash=1000000, risk_free_rate=0.01, **kwargs):
+    def __init__(self, initial_date: datetime, final_date: datetime, universe=None, information_class=None, initial_cash=1000000, risk_free_rate=0.01, risk_model=None, thresold=0.01, **kwargs):
         if not universe or len(universe) == 0:
             raise ValueError("The custom universe cannot be empty. Please provide a valid list of stocks.")
 
@@ -29,6 +29,8 @@ class CustomBacktest(Backtest):
         self.information_class = information_class
         self.initial_cash = initial_cash
         self.risk_free_rate = risk_free_rate
+        self.risk_model = risk_model
+        self.thresold = thresold
 
         # Update the broker's cash dynamically
         self.broker.cash = initial_cash

@@ -6,6 +6,7 @@ from scipy.optimize import minimize
 import pandas as pd
 from pybacktestchain.data_module import DataModule, FirstTwoMoments
 import os
+from pybacktestchain.broker import Broker, RiskModel
 
 
 def load_sp500_data():
@@ -151,3 +152,20 @@ class EqualRiskContributionPortfolio(FirstTwoMoments):
             logging.warning("Error computing portfolio, returning equal weight portfolio")
             logging.warning(e)
             return {k: 1 / len(information_set['companies']) for k in information_set['companies']}
+
+
+@dataclass
+class TrailingStop(RiskModel):
+    threshold: float = 0.05  # Default trailing stop of 5%
+
+    def trigger_stop_loss(self, t: datetime, portfolio: dict, prices: dict, broker: Broker):
+        for ticker, position in broker.positions.items():
+            highest_price = broker.highest_prices.get(ticker, broker.entry_prices[ticker])
+            current_price = prices.get(ticker)
+            if current_price is None:
+                continue
+            highest_price = max(highest_price, current_price)
+            broker.highest_prices[ticker] = highest_price
+            trailing_stop_price = highest_price * (1 - self.threshold)
+            if current_price < trailing_stop_price:
+                broker.sell(ticker, position.quantity, current_price, t)
