@@ -24,6 +24,8 @@ version_toml = [
     "pyproject.toml:tool.poetry.version",
 ]
 
+[tool.poetry.scripts]
+launch = "src.project.launch:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
