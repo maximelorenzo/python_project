@@ -77,9 +77,9 @@ The enhancements address several limitations of the original package and open it
 ### **How to Use the New Features**
 
 #### a. Configuring the Dashboard
-1. Launch the dashboard:
+1. Launch the dashboard once you set up the path to the package/src/project:
    ```bash
-   streamlit run path/to/dashboard.py
+   streamlit run dashboard.py
    ```
 2. Use the sidebar to:
    - Select stocks for your portfolio.
@@ -102,7 +102,7 @@ Python Project, M2 203
 ## Installation
 
 ```bash
-$ pip install project
+$ pip install pybacktestchain-extensions
 ```
 
 ## Usage
