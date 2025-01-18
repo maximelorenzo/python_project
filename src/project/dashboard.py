@@ -37,7 +37,7 @@ optimization_methods = ["FirstTwoMoments", "MaxSharpeRatio", "EqualRiskContribut
 selected_method_name = st.sidebar.selectbox("Select Optimization Method", options=optimization_methods)
 
 # Add a dropdown for selecting the risk model
-risk_models = ["StopLoss", 'TrailingStop'] 
+risk_models = ["StopLoss", 'TrailingStop', 'VolatilityStop'] 
 selected_risk_model = st.sidebar.selectbox("Select Risk Model", options=risk_models)
 
 # Add an input for the threshold value

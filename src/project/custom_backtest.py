@@ -10,7 +10,7 @@ from pybacktestchain.utils import generate_random_name
 from pybacktestchain.blockchain import Block, Blockchain
 from numba import jit 
 
-from pybacktestchain.broker import Backtest, StopLoss
+from pybacktestchain.broker import Backtest
 
 @dataclass
 class CustomBacktest(Backtest):

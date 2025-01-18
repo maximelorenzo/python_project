@@ -22,6 +22,8 @@ def main():
         from pybacktestchain.broker import StopLoss as RiskModel
     elif risk_model == "TrailingStop":
         from project.work import TrailingStop as RiskModel
+    elif risk_model == "VolatilityStop":
+        from project.work import VolatilityStop as RiskModel
     else:
         raise ValueError(f"Unknown risk model: {risk_model}")
     

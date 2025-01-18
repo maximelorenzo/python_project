@@ -7,6 +7,7 @@ from project.work import EqualRiskContributionPortfolio
 from project.work import MinimumVariancePortfolio
 from pybacktestchain.broker import StopLoss
 from project.work import TrailingStop
+from project.work import VolatilityStop
 
 custom_backtest = CustomBacktest(
     initial_date=datetime(2019, 1, 1),
@@ -14,7 +15,7 @@ custom_backtest = CustomBacktest(
     universe=['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA', 'NVDA', 'INTC', 'CSCO'],  # Custom universe
     information_class=MinimumVariancePortfolio,  # Custom optimization method
     initial_cash=1000000,  # Custom initial cash
-    risk_model=TrailingStop
+    risk_model=VolatilityStop
 )
 custom_backtest.run_backtest()
 
