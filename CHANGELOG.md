@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.9 (2025-01-18)
+
+### Bug Fixes
+
+- Tried to build an easier way to launch the dashboard, without success
+  ([`73cad99`](https://github.com/maximelorenzo/python_project/commit/73cad99858f3ef5c332de42082c85048c8982aed))
+
+
 ## v1.0.8 (2025-01-18)
 
 ### Bug Fixes
