@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.6 (2025-01-18)
+
+### Bug Fixes
+
+- Launch
+  ([`718ffb2`](https://github.com/maximelorenzo/python_project/commit/718ffb26318940f16107bd5d0921d819e9e0661c))
+
+
 ## v1.0.5 (2025-01-18)
 
 ### Bug Fixes
