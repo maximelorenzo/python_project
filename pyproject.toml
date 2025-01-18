@@ -2,15 +2,13 @@
 name = "pybacktestchain-extensions"
 version = "1.0.7"
 packages = [
-    { include = "src/project" }
+    { include = "src/project" },
+    { include = "docs" }
 ]
 description = "Python Project, M2 203"
 authors = ["Maxime Lorenzo"]
 license = "MIT"
 readme = "README.md"
-
-[tool.poetry.include]
-include = ["*"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -33,4 +31,4 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-run-dashboard = "src/project/launch:main"
+run-dashboard = "src.project.launch:main"
