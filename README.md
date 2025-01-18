@@ -60,6 +60,21 @@ In addition to the original risk model, **StopLoss**, a new risk model, **Traili
   - If the current price drops below the stop-loss price, the position is sold.
 - **Use Case**: Ideal for trending markets, where users want to secure gains while allowing positions to grow with upward momentum.
 
+### **c. VolatilityStop (New)**
+
+- **Objective**: Dynamically manages portfolio risk by monitoring the portfolio's or individual assets' volatility and triggering a stop-loss when the volatility exceeds a specified threshold.
+
+- **How it Works**:
+  - Tracks **rolling volatility** over a specified window (e.g., 20 days) for each asset in the portfolio.
+  - Computes the **rolling standard deviation** of percentage returns for each asset based on historical price data.
+  - Users specify a **threshold** (e.g., 0.02 for 2% daily volatility). If the calculated volatility for an asset exceeds the threshold, the position is liquidated.
+  - Volatility is dynamically updated during the backtest using pre-loaded historical data (e.g., from a CSV file).
+
+- **Use Case**:
+  - Ideal for risk-averse strategies in volatile markets.
+  - Prevents excessive losses by reducing exposure to high-volatility assets.
+  - Maintains portfolio stability by automatically exiting positions that exceed the acceptable risk level.
+
 
 ### **4. Why These Changes Matter**
 
