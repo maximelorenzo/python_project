@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.1 (2025-01-18)
+
+### Bug Fixes
+
+- Readme.md
+  ([`589d8fe`](https://github.com/maximelorenzo/python_project/commit/589d8fe3cea51b4df4b3edf0a8deb858169d4aaf))
+
+
 ## v1.1.0 (2025-01-18)
 
 ### Features
